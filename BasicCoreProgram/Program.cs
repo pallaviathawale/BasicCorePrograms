@@ -4,33 +4,21 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter the number of times to flip the coin: ");
-            string input = Console.ReadLine();
-
-            // Validate input
-            int FlipCoin;
-            if (!int.TryParse(input, out FlipCoin) || FlipCoin <= 0)
+            Console.WriteLine("Enter the Year to check leap year or not");
+            int year = Convert.ToInt32(Console.ReadLine());
+            if (year > 1000 && year < 10000)
             {
-                Console.WriteLine("Invalid input. Please enter a positive integer.");
-                return;
+                if ((year % 400) == 0)
+                    Console.WriteLine("{0} is a leap year", year);
+                else if ((year % 100) == 0)
+                    Console.WriteLine("{0} is not a leap year", year);
+                else if ((year % 4) == 0)
+                    Console.WriteLine("{0} is a leap year", year);
             }
-
-            // Flip the coin and count heads/tails
-            int numHeads = 0;
-            Random random = new Random();
-            for (int i = 0; i < FlipCoin; i++)
+            else
             {
-                if (random.NextDouble() < 0.5)
-                {
-                    numHeads++;
-                }
+                Console.WriteLine("{0} is a leap year", year);
             }
-
-            // Print results
-            double percentHeads = (double)numHeads / FlipCoin * 100;
-            double percentTails = 100 - percentHeads;
-            Console.WriteLine("Heads: {0:f2}%", percentHeads);
-            Console.WriteLine("Tails: {0:f2}%", percentTails);
         }
     }
 }
